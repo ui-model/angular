@@ -226,5 +226,8 @@ export * from './services/toast.service';
 export * from './services/toast.model';
 export * from './services/name-mapper.service';
 export * from './services/tooltip.service';
+export * from './services/event-bus.service';
+export * from './services/event-handler.service';
+export * from './services/base-event';
 
 export * from './guards/update-title.guard';
