@@ -1,29 +1,29 @@
-import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
+import { PositionMapper } from '@ui-model/angular/src/lib/services/position-mapper.service';
 import { Distance, Point } from '@ui-model/core';
-
-// TODO: 处理 svg 坐标系映射
 
 @Directive({
   selector: '[uiMovable]',
   exportAs: 'uiMovable',
 })
 export class MovableDirective {
-  @Output('uiMoveStart') start = new EventEmitter<MouseEvent>();
-  @Output('uiMoving') move = new EventEmitter<MouseEvent>();
-  @Output('uiMoveStop') stop = new EventEmitter<MouseEvent>();
-
-  moving = false;
-
-  startPos = new Point();
-  latestPos = new Point();
-  pos = new Point();
-
-  get offset(): Distance {
-    return this.pos.getDistanceTo(this.startPos);
+  constructor(private elementRef: ElementRef<Element>, private mapper: PositionMapper) {
   }
 
-  get delta(): Distance {
-    return this.pos.getDistanceTo(this.latestPos);
+  @Output('uiMoveStart') start = new EventEmitter<Distance>();
+  @Output('uiMoving') move = new EventEmitter<Distance>();
+  @Output('uiMoveStop') stop = new EventEmitter<Distance>();
+  offset = new Distance();
+  private previousPoint = new Point();
+
+  private _moving = false;
+
+  get moving(): boolean {
+    return this._moving;
+  }
+
+  get element(): Element {
+    return this.elementRef.nativeElement;
   }
 
   @HostListener('click', ['$event'])
@@ -38,12 +38,11 @@ export class MovableDirective {
     }
 
     const target = event.target as Element;
-    target.setPointerCapture(1);
+    target.setPointerCapture(event.which);
     event.stopPropagation();
-    this.moving = true;
-    this.startPos = new Point(event.screenX, event.screenY);
-    this.pos = new Point(event.screenX, event.screenY);
-    this.start.emit(event);
+    this._moving = true;
+    this.previousPoint = this.svgPos(event.clientX, event.clientY);
+    this.start.emit(this.offset);
   }
 
   @HostListener('mouseup', ['$event'])
@@ -51,12 +50,11 @@ export class MovableDirective {
     if (!isMajorButton(event)) {
       return;
     }
-    (event.target as Element).releasePointerCapture(1);
+    const target = event.target as Element;
+    target.releasePointerCapture(event.which);
     event.stopPropagation();
-    this.moving = false;
-    this.stop.emit(event);
-    this.startPos = new Point(event.screenX, event.screenY);
-    this.pos = new Point(event.screenX, event.screenY);
+    this._moving = false;
+    this.stop.emit(this.offset);
   }
 
   @HostListener('mousemove', ['$event'])
@@ -65,11 +63,17 @@ export class MovableDirective {
       return;
     }
     event.stopPropagation();
-    if (this.moving) {
-      this.latestPos = this.pos;
-      this.pos = new Point(event.screenX, event.screenY);
-      this.move.emit(event);
+    if (this._moving) {
+      const currentPoint = this.svgPos(event.clientX, event.clientY);
+      this.offset.x += currentPoint.x - this.previousPoint.x;
+      this.offset.y += currentPoint.y - this.previousPoint.y;
+      this.previousPoint = currentPoint;
+      this.move.emit(this.offset);
     }
+  }
+
+  svgPos(x: number, y: number): Point {
+    return this.mapper.mapToLocal(this.element, new Point(x, y));
   }
 }
 

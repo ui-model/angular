@@ -14,6 +14,7 @@ import { FormFieldDirective } from './directives/form-field.directive';
 import { FormGroupExporterDirective } from './directives/form-group-exporter.directive';
 import { ImgSrcFileDirective } from './directives/img-src-file.directive';
 import { MeasureDirective } from './directives/measure.directive';
+import { MovableTransformDirective } from './directives/movable-transform.directive';
 import { MovableDirective } from './directives/movable.directive';
 import { MultiBindingDirective } from './directives/multi-binding.directive';
 import { MultiSelectDirective } from './directives/multi-select.directive';
@@ -98,6 +99,7 @@ import { TypeNamePipe } from './pipes/type-name.pipe';
     DynamicComponentInputsDirective,
     WindowMeasureDirective,
     FormFieldDirective,
+    MovableTransformDirective,
   ],
   exports: [
     SelectDirective,
@@ -145,6 +147,7 @@ import { TypeNamePipe } from './pipes/type-name.pipe';
     IsInvalidDatePipe,
     WindowMeasureDirective,
     FormFieldDirective,
+    MovableTransformDirective,
   ],
 })
 export class UiModelModule {
