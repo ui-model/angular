@@ -1,7 +1,7 @@
 {
   "name": "@ui-model/angular",
   "version": "0.2.1",
-  "main": "src/public_api.ts",
+  "main": "src/public-api.ts",
   "peerDependencies": {
     "@angular/common": "^6.0.0 || ^7.0.0 || ^8.0.0",
     "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0",

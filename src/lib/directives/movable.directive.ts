@@ -1,6 +1,6 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
-import { PositionMapper } from '@ui-model/angular/src/lib/services/position-mapper.service';
 import { Distance, Point } from '@ui-model/core';
+import { PositionMapper } from '../services/position-mapper.service';
 
 @Directive({
   selector: '[uiMovable]',

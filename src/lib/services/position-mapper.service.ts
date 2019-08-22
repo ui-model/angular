@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { findParent } from '@ui-model/angular/src/lib/utils/find-parent';
-import { screenToSvg } from '@ui-model/angular/src/lib/utils/screen-to-svg';
-import { svgToScreen } from '@ui-model/angular/src/lib/utils/svg-to-screen';
-import { Point } from '@ui-model/core/src/lib/utils/point';
+import { Point } from '@ui-model/core';
+import { findParent } from '../utils/find-parent';
+import { screenToSvg } from '../utils/screen-to-svg';
+import { svgToScreen } from '../utils/svg-to-screen';
 
 // SVG 内部的坐标系和外部的坐标系不同，这个映射器用来在两者之间映射，必要时可以覆盖它，以实现自己的映射逻辑
 @Injectable({

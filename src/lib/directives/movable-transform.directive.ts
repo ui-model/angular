@@ -1,5 +1,5 @@
 import { ContentChild, Directive, HostBinding } from '@angular/core';
-import { MovableDirective } from '@ui-model/angular/src/lib/directives/movable.directive';
+import { MovableDirective } from './movable.directive';
 
 @Directive({
   selector: '[uiMovableTransform]',
