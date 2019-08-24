@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Rect } from '@ui-model/core';
 
 // TODO: 改用 Mutation​Observer
@@ -6,7 +6,7 @@ import { Rect } from '@ui-model/core';
   selector: '[uiMeasure]',
   exportAs: 'uiMeasure',
 })
-export class MeasureDirective implements OnInit {
+export class MeasureDirective implements OnInit, AfterContentInit {
 
   constructor(element: ElementRef<HTMLElement>) {
     this.element = element.nativeElement;
@@ -23,8 +23,10 @@ export class MeasureDirective implements OnInit {
 
   @Input('uiMeasureSignal')
   set signal(value: any) {
-    this._signal = value;
-    this.update();
+    if (value !== this._signal) {
+      this._signal = value;
+      this.update();
+    }
   }
 
   private _boundingClientRect: Rect;
@@ -57,6 +59,10 @@ export class MeasureDirective implements OnInit {
 
   @HostListener('load')
   onLoad(): void {
+    this.update();
+  }
+
+  ngAfterContentInit(): void {
     this.update();
   }
 
