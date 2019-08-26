@@ -1,7 +1,16 @@
-import { AfterContentInit, Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import {
+  AfterContentInit,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Rect } from '@ui-model/core';
+import { nextTick } from '../utils/next-tick';
 
-// TODO: 改用 Mutation​Observer
 @Directive({
   selector: '[uiMeasure]',
   exportAs: 'uiMeasure',
@@ -25,7 +34,7 @@ export class MeasureDirective implements OnInit, AfterContentInit {
   set signal(value: any) {
     if (value !== this._signal) {
       this._signal = value;
-      this.update();
+      nextTick(() => this.update());
     }
   }
 
