@@ -1,6 +1,6 @@
 import { inject, TestBed } from '@angular/core/testing';
-import { isNumber, Model, Property } from '@ui-model/angular';
-
+import { Model, Property } from '../decorators/form-maker';
+import { isNumber } from '../validators/is-number.validator';
 import { FormMaker } from './form-maker.service';
 
 @Model()

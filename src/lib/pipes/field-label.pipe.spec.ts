@@ -1,4 +1,4 @@
-import { PropertyMetadata } from '@ui-model/angular';
+import { PropertyMetadata } from '../decorators/form-maker/property-metadata';
 import { NameMapper } from '../services/name-mapper.service';
 import { FieldLabelPipe } from './field-label.pipe';
 
