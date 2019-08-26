@@ -14,6 +14,7 @@ import { FormFieldDirective } from './directives/form-field.directive';
 import { FormGroupExporterDirective } from './directives/form-group-exporter.directive';
 import { ImgSrcFileDirective } from './directives/img-src-file.directive';
 import { MeasureDirective } from './directives/measure.directive';
+import { MovablePositionDirective } from './directives/movable-position.directive';
 import { MovableTransformDirective } from './directives/movable-transform.directive';
 import { MovableDirective } from './directives/movable.directive';
 import { MultiBindingDirective } from './directives/multi-binding.directive';
@@ -100,6 +101,7 @@ import { TypeNamePipe } from './pipes/type-name.pipe';
     WindowMeasureDirective,
     FormFieldDirective,
     MovableTransformDirective,
+    MovablePositionDirective,
   ],
   exports: [
     SelectDirective,
@@ -148,6 +150,7 @@ import { TypeNamePipe } from './pipes/type-name.pipe';
     WindowMeasureDirective,
     FormFieldDirective,
     MovableTransformDirective,
+    MovablePositionDirective,
   ],
 })
 export class UiModelModule {
@@ -168,6 +171,7 @@ export * from './directives/multi-select.directive';
 
 export * from './directives/click-outside.directive';
 export * from './directives/movable.directive';
+export * from './directives/movable-position.directive';
 export * from './directives/measure.directive';
 export * from './directives/img-src-file.directive';
 export * from './directives/file-change-detect.directive';
