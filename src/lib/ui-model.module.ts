@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import 'reflect-metadata';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { ContentEditableDirective } from './directives/content-editable.directive';
 import { CountDownDirective } from './directives/count-down.directive';
 import { DateInputDirective } from './directives/date-input.directive';
 import { DisabledDirective } from './directives/disabled.directive';
@@ -102,6 +103,7 @@ import { TypeNamePipe } from './pipes/type-name.pipe';
     FormFieldDirective,
     MovableTransformDirective,
     MovablePositionDirective,
+    ContentEditableDirective,
   ],
   exports: [
     SelectDirective,
@@ -151,6 +153,7 @@ import { TypeNamePipe } from './pipes/type-name.pipe';
     FormFieldDirective,
     MovableTransformDirective,
     MovablePositionDirective,
+    ContentEditableDirective,
   ],
 })
 export class UiModelModule {
