@@ -65,10 +65,12 @@ export class MovableDirective {
     event.stopPropagation();
     if (this._moving) {
       const currentPoint = this.svgPos(event.clientX, event.clientY);
-      this.offset.x += currentPoint.x - this.previousPoint.x;
-      this.offset.y += currentPoint.y - this.previousPoint.y;
+      const deltaX = currentPoint.x - this.previousPoint.x;
+      const deltaY = currentPoint.y - this.previousPoint.y;
+      this.offset.x += deltaX;
+      this.offset.y += deltaY;
       this.previousPoint = currentPoint;
-      this.move.emit(this.offset);
+      this.move.emit(new Distance(deltaX, deltaY));
     }
   }
 
