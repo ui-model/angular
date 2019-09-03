@@ -14,7 +14,6 @@ export class ContentEditableDirective implements ControlValueAccessor {
 
   @Input()
   html = true;
-
   private isDisabled = false;
   private _onTouched: () => void;
   private _onChange: (value: string) => void;
@@ -41,7 +40,7 @@ export class ContentEditableDirective implements ControlValueAccessor {
     }
   }
 
-  @HostListener('input', ['$event'])
+  @HostListener('input')
   input(): void {
     this.changed(this.value);
   }
