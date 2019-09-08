@@ -37,7 +37,7 @@ export class FormUtils {
     }
   }
 
-  scrollFirstFieldErrorIntoView(root: NodeSelector = document, selector: string = 'ui-field-error>div'): void {
+  scrollFirstFieldErrorIntoView(root: ParentNode = document, selector: string = 'ui-field-error>div'): void {
     Promise.resolve().then(() => {
       const firstFieldErrorContent = root.querySelector(selector);
       if (!firstFieldErrorContent) {
