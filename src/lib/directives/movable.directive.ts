@@ -26,6 +26,10 @@ export class MovableDirective {
     return this.elementRef.nativeElement;
   }
 
+  reset(): void {
+    this.offset = new Distance();
+  }
+
   @HostListener('click', ['$event'])
   click(event: MouseEvent): void {
     event.stopPropagation();
