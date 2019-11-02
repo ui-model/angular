@@ -190,6 +190,10 @@ export * from './directives/form-group-exporter.directive';
 export * from './directives/field-metadata.directive';
 export * from './directives/date-input.directive';
 export * from './directives/dynamic-component-inputs.directive';
+export * from './directives/multi-binding.directive';
+export * from './directives/window-measure.directive';
+export * from './directives/movable-transform.directive';
+export * from './directives/content-editable.directive';
 
 export * from './utils/base-control-within-form/base-control-within-form';
 export * from './utils/next-tick';
@@ -203,6 +207,7 @@ export * from './pipes/safe-resource-url.pipe';
 export * from './pipes/safe-url.pipe';
 export * from './pipes/safe-html.pipe';
 export * from './pipes/safe-script.pipe';
+export * from './pipes/safe-style.pipe';
 export * from './pipes/default.pipe';
 export * from './pipes/is-empty.pipe';
 export * from './pipes/is-not-empty.pipe';

@@ -10,7 +10,7 @@ export class FileChangeDetectDirective {
   }
 
   @HostListener('change')
-  private onChange(): void {
+  onChange(): void {
     this.changeDetector.markForCheck();
   }
 }

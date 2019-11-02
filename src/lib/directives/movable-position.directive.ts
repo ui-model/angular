@@ -5,7 +5,7 @@ import { MovableDirective } from './movable.directive';
   selector: '[uiMovablePosition]',
 })
 export class MovablePositionDirective {
-  @ContentChild(MovableDirective, { static: false })
+  @ContentChild(MovableDirective, { static: true })
   movable: MovableDirective;
 
   @HostBinding('style.left.px')

@@ -5,7 +5,7 @@ import { MovableDirective } from './movable.directive';
   selector: '[uiMovableTransform]',
 })
 export class MovableTransformDirective {
-  @ContentChild(MovableDirective, { static: false })
+  @ContentChild(MovableDirective, { static: true })
   movable: MovableDirective;
 
   @HostBinding('style.transform')
