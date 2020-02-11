@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import 'reflect-metadata';
+import { AddUniqueIdDirective } from './directives/add-unique-id.directive';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { ContentEditableDirective } from './directives/content-editable.directive';
 import { CountDownDirective } from './directives/count-down.directive';
@@ -104,6 +105,7 @@ import { TypeNamePipe } from './pipes/type-name.pipe';
     MovableTransformDirective,
     MovablePositionDirective,
     ContentEditableDirective,
+    AddUniqueIdDirective,
   ],
   exports: [
     SelectDirective,
@@ -154,6 +156,7 @@ import { TypeNamePipe } from './pipes/type-name.pipe';
     MovableTransformDirective,
     MovablePositionDirective,
     ContentEditableDirective,
+    AddUniqueIdDirective,
   ],
 })
 export class UiModelModule {
@@ -194,6 +197,7 @@ export * from './directives/multi-binding.directive';
 export * from './directives/window-measure.directive';
 export * from './directives/movable-transform.directive';
 export * from './directives/content-editable.directive';
+export * from './directives/add-unique-id.directive';
 
 export * from './utils/base-control-within-form/base-control-within-form';
 export * from './utils/next-tick';
